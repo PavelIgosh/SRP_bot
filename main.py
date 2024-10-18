@@ -3,7 +3,7 @@ import telebot
 from telebot import types
 import random
 
-bot_token = os.getenv('TELEGRAM_TOKEN')
+bot_token = os.getenv('7776568653:AAG93jlF4jdeoJhbb2_fATbHfpwWtqYCSwY')
 bot = telebot.TeleBot(bot_token)
 
 
