@@ -7,15 +7,19 @@ bot_token = os.getenv('7776568653:AAG93jlF4jdeoJhbb2_fATbHfpwWtqYCSwY')
 bot_tg = telebot.TeleBot(bot_token)
 
 
-@bot.message_handler(commands=['start'])
+@bot_tg.message_handler(commands=['start'])
 def start(message):
     markup = types.ReplyKeyboardMarkup(row_width=3)
     markup.add(types.KeyboardButton('🗿'), types.KeyboardButton('✂️'), types.KeyboardButton('📄'))
-    bot.reply_to(message, "Добро пожаловать в игру 'Камень, ножницы, бумага'! Для игры используйте кнопки ниже:",
+    bot_tg.reply_to(message, "Добро пожаловать в игру 'Камень, ножницы, бумага'! Для игры используйте кнопки ниже:",
                  reply_markup=markup)
 
 
-@bot.message_handler(func=lambda message: True)
+@bot_tg.message_handler(commands=['test_work'])
+def test_work(message):
+    bot_tg.reply_to(message, "Работа бота корректная!")
+
+@bot_tg.message_handler(func=lambda message: True)
 def play_game(message):
     user_choice = message.text
     bot_choice = random.choice(['🗿', '✂️', '📄'])
