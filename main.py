@@ -4,7 +4,7 @@ from telebot import types
 import random
 
 bot_token = os.getenv('7776568653:AAG93jlF4jdeoJhbb2_fATbHfpwWtqYCSwY')
-bot = telebot.TeleBot(bot_token)
+bot_tg = telebot.TeleBot(bot_token)
 
 
 @bot.message_handler(commands=['start'])
@@ -21,16 +21,16 @@ def play_game(message):
     bot_choice = random.choice(['🗿', '✂️', '📄'])
 
     if user_choice not in ['🗿', '✂️', '📄']:
-        bot.reply_to(message, "Пожалуйста, используйте кнопки для выбора камня, ножниц или бумаги.")
+        bot_tg.reply_to(message, "Пожалуйста, используйте кнопки для выбора камня, ножниц или бумаги.")
         return
 
     if user_choice == bot_choice:
-        bot.reply_to(message, f"Вы выбрали {user_choice}, а я выбрал {bot_choice}. Ничья!")
+        bot_tg.reply_to(message, f"Вы выбрали {user_choice}, а я выбрал {bot_choice}. Ничья!")
     elif (user_choice == '🗿' and bot_choice == '✂️') or (user_choice == '✂️' and bot_choice == '📄') or (
             user_choice == '📄' and bot_choice == '🗿'):
-        bot.reply_to(message, f"Вы выбрали {user_choice}, а я выбрал {bot_choice}. Вы победили! 🎉")
+        bot_tg.reply_to(message, f"Вы выбрали {user_choice}, а я выбрал {bot_choice}. Вы победили! 🎉")
     else:
-        bot.reply_to(message, f"Вы выбрали {user_choice}, а я выбрал {bot_choice}. Я победил! 😄")
+        bot_tg.reply_to(message, f"Вы выбрали {user_choice}, а я выбрал {bot_choice}. Я победил! 😄")
 
 
-bot.polling()
+bot_tg.polling()
